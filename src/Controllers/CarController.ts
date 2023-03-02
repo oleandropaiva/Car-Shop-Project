@@ -21,7 +21,7 @@ class CarController {
   public async getCars() {
     const { id } = this.req.params;
     
-    if (id && !isValidObjectId(id)) {
+    if (!isValidObjectId(id)) {
       return this.res.status(422).json({ message: 'Invalid mongo id' });
     }
     
