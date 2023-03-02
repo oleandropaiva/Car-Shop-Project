@@ -19,6 +19,19 @@ class CarService {
     const newCar = this.createCarDomain(createdCar);
     return newCar;
   }
+
+  public async getCars(id: string | undefined): Promise<Car[] | null | Car> {
+    const cars = await this.model.getCars(id);
+
+    if (!cars) {
+      return null;
+    }
+
+    if (Array.isArray(cars)) {
+      return cars.map((car) => this.createCarDomain(car));
+    }
+    return this.createCarDomain(cars);
+  }
 }
 
 export default CarService;

@@ -5,7 +5,7 @@ import router from './Router/CarRouter';
 const app = express();
 
 app.use(express.json());
-app.use(Error.errorMid);
 app.use(router);
+app.use(Error.errorMid);
 
 export default app;

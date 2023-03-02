@@ -1,7 +1,7 @@
 import { IVehicle } from '../Interfaces/ICar';
 
 class Vehicle {
-  protected id: number | undefined;
+  protected id: string | undefined;
   protected model: string;
   protected year: number;
   protected color: string;
@@ -17,11 +17,11 @@ class Vehicle {
     this.buyValue = vehicle.buyValue;
   }
 
-  public setId(id: number): void {
+  public setId(id: string): void {
     this.id = id;
   }
 
-  public getId(): number | undefined {
+  public getId(): string | undefined {
     return this.id;
   }
 
