@@ -51,4 +51,3 @@ class CarService {
 }
 
 export default CarService;
-// teste
