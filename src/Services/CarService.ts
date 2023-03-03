@@ -32,6 +32,22 @@ class CarService {
     }
     return this.createCarDomain(cars);
   }
+
+  private async isValidCar(id: string): Promise<boolean> {
+    const isValid = await this.model.getCars(id);
+    if (isValid) {
+      return true;
+    }
+    return false;
+  }
+
+  public async updateCar(id: string, car: ICar): Promise<Car | null> {
+    if (await this.isValidCar(id)) {
+      const carUpdate = await this.model.updateCar(id, car) as ICar;
+      return this.createCarDomain(carUpdate);
+    }
+    return null;
+  }
 }
 
 export default CarService;
