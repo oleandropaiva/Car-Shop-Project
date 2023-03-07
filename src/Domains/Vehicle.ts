@@ -1,4 +1,4 @@
-import { IVehicle } from '../Interfaces/ICar';
+import IVehicle from '../Interfaces/IVehicle';
 
 class Vehicle {
   protected id: string | undefined;

@@ -1,12 +1,12 @@
-interface ICar {
+interface IMotorcycle {
   id?: string,
   model: string,
   year: number,
   color: string,
   status?: boolean,
   buyValue: number,
-  doorsQty: number,
-  seatsQty: number
+  category: string,
+  engineCapacity: number,
 }
 
-export default ICar;
+export default IMotorcycle;
