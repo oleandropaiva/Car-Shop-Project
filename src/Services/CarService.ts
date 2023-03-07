@@ -33,7 +33,7 @@ class CarService {
     return this.createCarDomain(cars);
   }
 
-  private async isValidCar(id: string): Promise<boolean> {
+  public async isValidCar(id: string): Promise<boolean> {
     const isValid = await this.model.getCars(id);
     if (isValid) {
       return true;
