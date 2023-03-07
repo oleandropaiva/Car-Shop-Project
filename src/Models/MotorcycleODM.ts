@@ -1,8 +1,10 @@
 import { Schema } from 'mongoose';
 import AbstractODM from './AbstractODM';
+
 import IMotorcycle from '../Interfaces/IMotorcycle';
 
 class MotorcycleODM extends AbstractODM<IMotorcycle> {
+  [x: string]: unknown;
   constructor() {
     const schema = new Schema<IMotorcycle>({
       model: { type: String, required: true },
@@ -13,7 +15,7 @@ class MotorcycleODM extends AbstractODM<IMotorcycle> {
       category: { type: String, required: true },
       engineCapacity: { type: Number, required: true },
     });
-
+    
     super(schema, 'Motorcycle');
   }
 
@@ -21,6 +23,15 @@ class MotorcycleODM extends AbstractODM<IMotorcycle> {
     const createdMotorcycle = await this.model.create({ ...motorcycle });
     
     return createdMotorcycle;
+  }
+
+  public async getMotorcycles(id: string | undefined): Promise<IMotorcycle[] | null | IMotorcycle> {
+    if (id) {
+      const motorcycle = await this.model.findById(id);
+      return motorcycle;
+    }
+    const motorcycles = await this.model.find();
+    return motorcycles;
   }
 }
 
