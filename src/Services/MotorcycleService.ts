@@ -40,6 +40,14 @@ class MotorcycleService {
     }
     return false;
   }
+
+  public async updateMotorcycle(id: string, motorcycle: IMotorcycle): Promise<Motorcycle | null> {
+    if (await this.isValidMotorcycle(id)) {
+      const motorcycleUpdate = await this.model.updateMotorcycle(id, motorcycle) as IMotorcycle;
+      return this.createMotorcycleDomain(motorcycleUpdate);
+    }
+    return null;
+  }
 }
 
 export default MotorcycleService;
